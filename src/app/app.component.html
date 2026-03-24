@@ -1,0 +1,49 @@
+<ion-app>
+  <!-- ── Sidebar menu ──────────────────────────────── -->
+
+  <!-- Sidebar menu: icons only -->
+
+  <ion-menu contentId="main-content" menuId="main-menu" side="start" type="overlay">
+    <ion-header class="menu-header">
+      <ion-toolbar>
+        <div class="menu-logo">
+          <span class="logo-mark">FLVR</span><span class="logo-sub">BIOTECH</span>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="menu-content icons-only">
+      <ion-list lines="none">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of menuPages">
+          <ion-item
+            [routerLink]="p.url"
+            routerLinkActive="active-item"
+            routerDirection="root"
+            detail="false"
+            class="menu-item icon-only">
+            <span class="sidebar-icon-wrap">
+              <ion-icon [name]="p.icon"></ion-icon>
+              <span class="sidebar-icon-fallback">{{ p.title.charAt(0) }}</span>
+            </span>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <div class="menu-footer">
+        <p>Part of the <strong>Flavuor</strong> ecosystem</p>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+
+  <!-- Top navigation bar (always visible above router outlet) -->
+
+  <ion-header class="top-nav">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>FLVR BIOTECH</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

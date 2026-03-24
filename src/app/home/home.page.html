@@ -1,0 +1,191 @@
+
+<ion-content class="home-content" [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <!-- HERO with background image -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <span class="eyebrow">Feeding Tomorrow</span>
+      <h1 class="hero-headline">
+        Science built<br>to end hunger
+      </h1>
+      <p class="hero-sub">
+        Flavuor Biotech applies precision biotechnology — CRISPR-edited crops,
+        alternative proteins, AI-driven agriculture — to build a food system
+        capable of nourishing 10 billion people.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" routerLink="/technology">Explore Our Technologies</a>
+        <a class="btn-ghost" routerLink="/about">Our Mission</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </div>
+  </section>
+
+      <!-- ── LIVE IMPACT COUNTERS ──────────────────────────────────────────────── -->
+      <section class="live-impact-section">
+        <div class="live-header">
+          <span class="live-dot"></span>
+          <span class="live-label">Live Impact Data</span>
+          <span class="live-sublabel">— calculated from verified annual rates, updated every second</span>
+        </div>
+        <div class="live-grid">
+          <div class="live-card">
+            <span class="live-num">{{ wastedKg | number:'1.0-0' }}</span>
+            <span class="live-unit">kg food wasted</span>
+            <span class="live-since">since you opened this page</span>
+          </div>
+          <div class="live-card accent">
+            <span class="live-num">811<span class="live-unit-inline">M</span></span>
+            <span class="live-unit">people hungry tonight</span>
+            <span class="live-since">every single night</span>
+          </div>
+          <div class="live-card">
+            <span class="live-num">{{ co2Tonnes | number:'1.0-0' }}</span>
+            <span class="live-unit">tonnes CO₂ from meat</span>
+            <span class="live-since">today so far</span>
+          </div>
+          <div class="live-card">
+            <span class="live-num">{{ waterLitres | number:'1.0-0' }}</span>
+            <span class="live-unit">litres of water</span>
+            <span class="live-since">used for beef production today</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── IMPACT NUMBERS (animated on scroll) ──────────────────────────────── -->
+      <section class="impact-strip" #impactSection>
+        <div class="impact-inner">
+          <div class="impact-stat" [class.animate-in]="impactVisible">
+            <span class="stat-num">{{ statHungry | number:'1.0-0' }}M</span>
+            <span class="stat-label">people go to bed hungry every night</span>
+          </div>
+          <div class="impact-stat" [class.animate-in]="impactVisible">
+            <span class="stat-num">9.8B</span>
+            <span class="stat-label">people on Earth by 2050</span>
+          </div>
+          <div class="impact-stat" [class.animate-in]="impactVisible">
+            <span class="stat-num">{{ statYield }}%</span>
+            <span class="stat-label">less crop yield expected from climate change</span>
+          </div>
+          <div class="impact-stat" [class.animate-in]="impactVisible">
+            <span class="stat-num">1/3</span>
+            <span class="stat-label">of all food produced globally is wasted</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 4 PROBLEM AREAS ───────────────────────────────────────────────────── -->
+      <section class="problems-section" #problemsSection>
+        <div class="section-inner">
+          <span class="eyebrow">The Challenge</span>
+          <h2 class="section-headline">Four crises. One mission.</h2>
+          <div class="problems-grid">
+            <div class="problem-card" [class.fade-up]="problemsVisible">
+              <div class="problem-icon-wrap red">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+              </div>
+              <h3>Food Shortage</h3>
+              <p>By 2050 we need to produce 70% more food with only 4% more arable land, while climate change strips 20% of current yield.</p>
+            </div>
+            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.1s">
+              <div class="problem-icon-wrap orange">
+                <ion-icon name="paw-outline"></ion-icon>
+              </div>
+              <h3>Animal Cruelty</h3>
+              <p>Over 80 billion land animals are raised for food every year under industrial conditions. Alternative proteins offer a humane path forward.</p>
+            </div>
+            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.2s">
+              <div class="problem-icon-wrap green">
+                <ion-icon name="cloud-outline"></ion-icon>
+              </div>
+              <h3>Agricultural Pollution</h3>
+              <p>Agriculture accounts for 30% of global energy use, 14.5% of greenhouse gas emissions, and massive antibiotic overuse in livestock.</p>
+            </div>
+            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.3s">
+              <div class="problem-icon-wrap blue">
+                <ion-icon name="trash-outline"></ion-icon>
+              </div>
+              <h3>Food Wastage</h3>
+              <p>1.3 billion metric tons of food wasted annually. 14% lost between harvest and retail.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CORE TECHNOLOGIES ────────────────────────────────────────────────── -->
+      <section class="tech-section" #techSection>
+        <div class="section-inner">
+          <span class="eyebrow">Core Technologies</span>
+          <h2 class="section-headline">Built on precision science</h2>
+          <div class="tech-grid">
+            <div class="tech-card" [class.fade-up]="techVisible" routerLink="/technology">
+              <span class="card-tag">01</span>
+              <h3>CRISPR Precision Breeding</h3>
+              <p>Edit crops for drought tolerance, disease resistance, and enhanced nutrition — without introducing foreign DNA.</p>
+              <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
+            </div>
+            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.1s" routerLink="/technology">
+              <span class="card-tag">02</span>
+              <h3>Marker-Assisted Selection</h3>
+              <p>Traditional breeding takes 8–12 years. DNA markers cut that to 3–5 years at the seedling stage.</p>
+              <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
+            </div>
+            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.2s" routerLink="/flvr-meat">
+              <span class="card-tag">03</span>
+              <h3>Alternative Proteins</h3>
+              <p>Lab-cultivated and fermentation-based proteins that match conventional meat — without the environmental cost.</p>
+              <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
+            </div>
+            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.3s" routerLink="/technology">
+              <span class="card-tag">04</span>
+              <h3>AI-Driven Agriculture</h3>
+              <p>Machine learning and IoT sensors predict yield, detect crop disease in hours, and reduce input waste.</p>
+              <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MISSION ──────────────────────────────────────────────────────────── -->
+      <section class="mission-section">
+        <div class="mission-inner">
+          <span class="eyebrow">Our Purpose</span>
+          <blockquote class="mission-quote">
+            "No one should go to bed hungry."
+          </blockquote>
+          <p class="mission-body">
+            Flavuor Biotech is the science arm of the Flavuor food ecosystem —
+            working from seed to plate to solve food insecurity through
+            biotechnology, research, and innovation.
+          </p>
+          <a class="btn-primary" routerLink="/about">Our Story</a>
+        </div>
+      </section>
+
+      <!-- ── CTA ──────────────────────────────────────────────────────────────── -->
+      <section class="cta-section">
+        <div class="cta-inner">
+          <h2>Partner with us</h2>
+          <p>Whether you're a researcher, investor, or change-maker — we want to work with you.</p>
+          <a class="btn-white" routerLink="/contact">Get in Touch</a>
+        </div>
+      </section>
+
+      <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <span class="footer-logo">FLVR BIOTECH</span>
+          <span class="footer-copy">&copy; 2025 Flavuor Biotech. Part of the Flavuor ecosystem.</span>
+          <nav class="footer-links">
+            <a routerLink="/technology">Technology</a>
+            <a routerLink="/food-security">Food Security</a>
+            <a routerLink="/about">About</a>
+            <a routerLink="/contact">Contact</a>
+          </nav>
+        </div>
+      </footer>
+
+    </ion-content>
+

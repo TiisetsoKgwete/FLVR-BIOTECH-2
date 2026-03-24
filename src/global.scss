@@ -1,0 +1,126 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* dark.system.css disabled — Flavuor Biotech uses a forced light editorial theme */
+
+// ── Global base ────────────────────────────────────────────────────────────
+ion-content {
+  --background: var(--ion-background-color, #ffffff);
+}
+
+// Remove Ionic's automatic header bottom border shadow line
+ion-header::after { display: none; }
+
+// ── Global typography baseline ──────────────────────────────────────────────
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --clr-accent: #5a9e2f;
+  --clr-accent-dark: #4a8525;
+  --clr-accent-light: #a8e063;
+  --clr-text: #111827;
+  --clr-text-muted: #6b7280;
+  --clr-surface: #f6faf3;
+  --clr-surface-alt: #eafbe7;
+  --clr-border: #d9edd0;
+  --clr-bg-hero: #f6faf3;
+}
+
+
+body, ion-app {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--clr-text);
+  line-height: 1.6;
+  background: var(--clr-bg-hero) url('/assets/biotech-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--clr-accent);
+  margin-bottom: 0.5em;
+}
+
+ion-card {
+  background: var(--clr-surface-alt);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(90,158,47,0.06);
+  padding: 1.2em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.counter-card {
+  background: #fff;
+  border: 2px solid var(--clr-accent-light);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(90,158,47,0.04);
+  padding: 1.2em 1.5em;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+// Eyebrow label — used across all sections
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+}
+
+// Section headline — consistent across all pages
+.section-headline {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--clr-text);
+  margin: 14px 0 48px;
+  line-height: 1.1;
+}
+
+// Shared max-width wrapper
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

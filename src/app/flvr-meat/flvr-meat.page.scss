@@ -1,0 +1,16 @@
+ .page-content {
+  .section-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 2.5em 1.5em;
+    background: #fff;
+    color: #111827;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px 0 rgba(90,158,47,0.06);
+  }
+  h1, h2, h3 { color: var(--clr-accent); }
+  .eyebrow { color: var(--clr-accent-light); }
+  ul, li { margin-bottom: 0.7em; }
+}

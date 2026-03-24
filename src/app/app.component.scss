@@ -1,0 +1,170 @@
+.home-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.top-nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+ion-router-outlet#main-content {
+  margin-top: 56px;
+  display: block;
+}
+// ── Sidebar menu styles ──────────────────────────────────────────────────────
+
+ion-menu {
+  --width: 80px;
+  box-shadow: 2px 0 12px 0 rgba(0,0,0,0.04);
+}
+
+.menu-header {
+  ion-toolbar {
+    --background: #111827;
+    --border-width: 0;
+    --padding-start: 24px;
+    --padding-end: 24px;
+    --min-height: 72px;
+  }
+
+  .menu-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    .logo-mark {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .logo-sub {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8e063;
+    }
+  }
+}
+
+  .menu-content.icons-only {
+    --background: #111827;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    ion-list {
+      width: 100%;
+      background: transparent;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .menu-item.icon-only {
+      --background: transparent;
+      --background-activated: rgba(168, 224, 99, 0.1);
+      --background-focused: rgba(168, 224, 99, 0.1);
+      --color: #5a9e2f;
+      --padding-start: 0;
+      --padding-end: 0;
+      --min-height: 56px;
+      border-radius: 12px;
+      margin: 8px 0;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.2s, color 0.2s;
+      .sidebar-icon-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: rgba(168,224,99,0.12);
+        border-radius: 8px;
+        position: relative;
+      }
+      ion-icon {
+        color: #5a9e2f !important;
+        font-size: 22px;
+        z-index: 2;
+        display: inline-block;
+      }
+      .sidebar-icon-fallback {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5a9e2f;
+        font-size: 18px;
+        font-weight: 700;
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      &.active-item {
+        --background: rgba(168, 224, 99, 0.18);
+        .sidebar-icon-wrap {
+          background: #5a9e2f;
+        }
+        ion-icon, .sidebar-icon-fallback { color: #fff !important; }
+      }
+    }
+    .page-content, .home-content, ion-content {
+      margin-top: 56px !important;
+      min-height: calc(100vh - 56px);
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #f6faf3 0%, #eafbe7 100%) !important;
+    }
+
+    // Improve contrast for ghost buttons on light backgrounds
+    .btn-ghost {
+      border: 2px solid #5a9e2f;
+      color: #5a9e2f;
+      background: #fff;
+      &:hover { background: #f6faf3; border-color: #4a8525; color: #4a8525; }
+    }
+    .menu-footer {
+      padding: 24px 0 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 16px;
+      text-align: center;
+      p {
+        font-size: 10px;
+        color: #4b5563;
+        margin: 0;
+      }
+      strong { color: #a8e063; }
+    }
+  }
+
+// ── Top navigation bar styles ─────────────────────────────
+.top-nav {
+  --background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  ion-toolbar {
+    --background: #fff;
+    --min-height: 56px;
+    display: flex;
+    align-items: center;
+    .ion-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5a9e2f;
+      letter-spacing: 0.04em;
+    }
+  }
+}

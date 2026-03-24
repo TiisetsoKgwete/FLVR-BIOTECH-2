@@ -1,0 +1,32 @@
+// For information on how to create your own theme, please refer to:
+// https://ionicframework.com/docs/theming/
+
+// ── Flavuor Biotech Design Tokens ─────────────────────────────────
+:root {
+  // Ionic overrides
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-text-color: #111827;
+  --ion-text-color-rgb: 17, 24, 39;
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #111827;
+  --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  // Brand palette
+  --clr-accent:        #5a9e2f;
+  --clr-accent-light:  #a8e063;
+  --clr-accent-dark:   #4a8525;
+  --clr-surface-alt:   #f6faf3;
+  --clr-border:        #d9edd0;
+  --clr-dark:          #111827;
+  --clr-body:          #374151;
+  --clr-muted:         #6b7280;
+  --clr-white:         #ffffff;
+
+  // Ionic primary  
+  --ion-color-primary:          #5a9e2f;
+  --ion-color-primary-rgb:      90, 158, 47;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade:    #4e8a29;
+  --ion-color-primary-tint:     #6aae44;
+}
