@@ -11,23 +11,27 @@
 }
 
 ion-router-outlet#main-content {
-  margin-top: 56px;
+  margin-top: 60px;
   display: block;
 }
 // ── Sidebar menu styles ──────────────────────────────────────────────────────
 
 ion-menu {
   --width: 80px;
-  box-shadow: 2px 0 12px 0 rgba(0,0,0,0.04);
+  @extend .liquid-glass !optional;
+  box-shadow: none;
+  border-radius: var(--glass-radius) 0 0 var(--glass-radius);
 }
 
 .menu-header {
   ion-toolbar {
-    --background: #111827;
+    --background: transparent;
     --border-width: 0;
     --padding-start: 24px;
     --padding-end: 24px;
     --min-height: 72px;
+    @extend .liquid-glass !optional;
+    box-shadow: none;
   }
 
   .menu-logo {
@@ -93,10 +97,11 @@ ion-menu {
         position: relative;
       }
       ion-icon {
-        color: #5a9e2f !important;
-        font-size: 22px;
-        z-index: 2;
-        display: inline-block;
+          color: #5a9e2f !important;
+          font-size: 22px;
+          z-index: 2;
+          display: inline-block;
+          @extend .icon-glow !optional;
       }
       .sidebar-icon-fallback {
         position: absolute;
@@ -148,18 +153,27 @@ ion-menu {
 
 // ── Top navigation bar styles ─────────────────────────────
 .top-nav {
-  --background: #fff;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+  --background: transparent;
+  box-shadow: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2000;
+  z-index: 9999;
+  background: #f6faf3 !important;
+  border-bottom: 2px solid #5a9e2f !important;
+  height: 60px !important;
+  display: block !important;
   ion-toolbar {
-    --background: #fff;
-    --min-height: 56px;
+    --background: transparent;
+    --min-height: 60px;
     display: flex;
     align-items: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 16px;
     .ion-title {
       font-size: 18px;
       font-weight: 700;

@@ -57,6 +57,83 @@ ion-header::after { display: none; }
   --clr-surface-alt: #eafbe7;
   --clr-border: #d9edd0;
   --clr-bg-hero: #f6faf3;
+
+  /* Vision Pro Glass Variables */
+  --glass-bg: rgba(255,255,255,0.22);
+  --glass-border: rgba(255,255,255,0.38);
+  --glass-blur: 18px;
+  --glass-shadow: 0 4px 32px 0 rgba(60,60,60,0.10);
+  --glass-radius: 22px;
+  --glass-shimmer: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%);
+  --icon-glow: 0 0 8px 2px #a8e06366;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(30,34,40,0.32);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-blur: 22px;
+    --glass-shadow: 0 4px 32px 0 rgba(0,0,0,0.22);
+    --glass-shimmer: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    --icon-glow: 0 0 12px 3px #a8e06399;
+    --clr-text: #f6faf3;
+    --clr-bg-hero: #111827;
+  }
+}
+
+// Vision Pro Glass Effect
+.liquid-glass {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+// Animated shimmer overlay
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--glass-shimmer);
+  opacity: 0.7;
+  mix-blend-mode: lighten;
+  animation: shimmer-move 3.5s linear infinite;
+}
+
+@keyframes shimmer-move {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// Icon glow
+.icon-glow, ion-icon.icon-glow {
+  filter: drop-shadow(var(--icon-glow));
+}
+
+// Parallax background support (optional usage)
+.parallax-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+// Extra-rounded corners utility
+.rounded-xl {
+  border-radius: 32px !important;
+}
+
+// Glassy modal overlay
+.glass-modal {
+  @extend .liquid-glass;
+  padding: 2em 1.5em;
+  max-width: 480px;
+  margin: 2em auto;
 }
 
 
@@ -81,11 +158,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ion-card {
-  background: var(--clr-surface-alt);
-  border-radius: 18px;
-  box-shadow: 0 2px 16px 0 rgba(90,158,47,0.06);
+  @extend .liquid-glass;
   padding: 1.2em 1.5em;
   margin-bottom: 1.5em;
+  border-radius: var(--glass-radius);
+}
+
+// Apply glass to all overlays
+ion-modal, .modal-wrapper, .glass-modal {
+  @extend .liquid-glass;
+}
+
+// Utility: apply glass to any container
+.glass {
+  @extend .liquid-glass;
 }
 
 .counter-card {
