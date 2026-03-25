@@ -1,72 +1,114 @@
-// ── Nav ─────────────────────────────────────────────────────────────────────
-.site-header {
-  box-shadow: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, box-shadow 0.3s;
-
-  &.scrolled {
-    border-bottom-color: #e8f0e0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-  }
-
-  .nav-toolbar {
-    --background: #ffffff;
-    --border-width: 0;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --min-height: 64px;
-  }
-
-  .hamburger-btn { --color: #111827; }
-
-  .nav-logo {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
-    padding: 0;
-    pointer-events: none;
-
-    .logo-mark {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111827;
+// ── Enhanced Glass Styles ─────────────────────────────────────────────────────
+.live-impact-section {
+  .live-grid {
+    .live-card {
+      @extend .floating-glass !optional;
+      padding: 1.5em;
+      margin: 0.5em;
+      text-align: center;
+      position: relative;
+      
+      &.accent {
+        background: linear-gradient(135deg, 
+          rgba(90,158,47,0.15) 0%, 
+          rgba(168,224,99,0.08) 100%);
+        border-color: rgba(90,158,47,0.3);
+      }
+      
+      .live-num {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: var(--clr-accent);
+        display: block;
+        margin-bottom: 0.5em;
+      }
+      
+      .live-unit {
+        font-size: 0.9em;
+        color: var(--clr-text);
+        opacity: 0.8;
+        display: block;
+        margin-bottom: 0.3em;
+      }
+      
+      .live-since {
+        font-size: 0.8em;
+        color: var(--clr-text);
+        opacity: 0.6;
+        font-style: italic;
+      }
     }
+  }
+}
 
-    .logo-sub {
-      font-size: 11px;
+// Hero section with glass effect
+.hero-section {
+  .hero-inner {
+    @extend .liquid-glass-enhanced !optional;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3em 2em;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    
+    .hero-headline {
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--clr-accent, #5a9e2f);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #5a9e2f, #a8e063);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1em;
     }
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding-right: 8px;
-    @media (max-width: 768px) { display: none; }
-  }
-
-  .nav-link {
-    font-size: 14px;
-    font-weight: 500;
-    color: #374151;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
-
-    &:hover { color: var(--clr-accent, #5a9e2f); }
-
-    &.nav-cta {
-      background: #111827;
-      color: #ffffff;
-      font-weight: 600;
-      padding: 9px 18px;
-      &:hover { background: var(--clr-accent, #5a9e2f); }
+    
+    .hero-sub {
+      font-size: 1.2em;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 2em;
+    }
+    
+    .hero-actions {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      flex-wrap: wrap;
+      
+      .btn-primary, .btn-ghost {
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .btn-primary {
+        @extend .floating-glass !optional;
+        background: linear-gradient(135deg, #5a9e2f, #a8e063);
+        color: white;
+        border: none;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(90,158,47,0.3);
+        }
+      }
+      
+      .btn-ghost {
+        background: transparent;
+        color: var(--clr-accent);
+        border: 1.5px solid var(--clr-accent);
+        
+        &:hover {
+          background: var(--clr-accent);
+          color: white;
+        }
+      }
     }
   }
 }

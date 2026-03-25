@@ -42,6 +42,19 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>FLVR BIOTECH</ion-title>
+      
+      <!-- Horizontal navigation pills -->
+      <ion-buttons slot="end" class="nav-pills">
+        <ion-button 
+          *ngFor="let p of menuPages" 
+          [routerLink]="p.url" 
+          routerLinkActive="nav-active"
+          routerDirection="root"
+          fill="outline"
+          class="nav-pill">
+          {{ p.title }}
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 

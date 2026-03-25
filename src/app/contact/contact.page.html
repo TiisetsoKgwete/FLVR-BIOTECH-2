@@ -1,22 +1,53 @@
-<ion-content class="page-content">
-  <section class="section-inner">
-    <span class="eyebrow">Contact</span>
-    <h1>Partner with us</h1>
-    <p>Whether you're a researcher, investor, or change-maker — we want to work with you. Reach out to start a conversation about building a more secure food future together.</p>
-    <form>
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input type="text" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Message</ion-label>
-        <ion-textarea required></ion-textarea>
-      </ion-item>
-      <ion-button expand="block" type="submit" color="success">Send Message</ion-button>
-    </form>
-  </section>
+<ion-content class="page-content page-animate-in">
+  <div class="page-container">
+    <div class="page-header">
+      <span class="page-eyebrow">Contact Us</span>
+      <h1 class="page-title">Get in Touch</h1>
+      <p class="page-subtitle">Ready to transform the future of food? We'd love to hear from you and explore how we can work together to build a more sustainable food system.</p>
+    </div>
+    
+    <div class="page-content stagger-in">
+      <div class="contact-content">
+        <section class="content-section">
+          <h2>Send us a message</h2>
+          <form class="contact-form">
+            <ion-item class="form-item">
+              <ion-label position="stacked">Name</ion-label>
+              <ion-input type="text" placeholder="Your name"></ion-input>
+            </ion-item>
+            
+            <ion-item class="form-item">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" placeholder="your@email.com"></ion-input>
+            </ion-item>
+            
+            <ion-item class="form-item">
+              <ion-label position="stacked">Message</ion-label>
+              <ion-textarea placeholder="Tell us about your project..." rows="4"></ion-textarea>
+            </ion-item>
+            
+            <button type="button" class="btn-submit">Send Message</button>
+          </form>
+        </section>
+        
+        <section class="content-section">
+          <h2>Connect with us</h2>
+          <div class="contact-info">
+            <div class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>info@flvrbiotech.com</span>
+            </div>
+            <div class="contact-item">
+              <ion-icon name="phone-outline"></ion-icon>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 </ion-content>
