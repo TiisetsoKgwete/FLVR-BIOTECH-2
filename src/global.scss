@@ -320,3 +320,154 @@ ion-modal, .modal-wrapper, .glass-modal {
   margin: 0 auto;
   padding: 0 24px;
 }
+
+// ── Dynamic Glass System ───────────────────────────────────────────────────────
+
+// Content-aware glass variables
+:root {
+  --content-density-light: 0.8;
+  --content-density-medium: 1.0;
+  --content-density-heavy: 1.2;
+  --ambient-light-low: 0.3;
+  --ambient-light-medium: 0.5;
+  --ambient-light-high: 0.7;
+  --user-activity-idle: 0.6;
+  --user-activity-active: 1.0;
+  --user-activity-focused: 1.2;
+}
+
+// Dynamic liquid glass with content awareness
+.liquid-glass-dynamic {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(calc(var(--glass-blur) * var(--content-density-medium)));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * var(--content-density-medium)));
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: calc(var(--ambient-light-medium) * var(--user-activity-active));
+  
+  // Content density variations
+  &.content-light {
+    backdrop-filter: blur(calc(var(--glass-blur) * var(--content-density-light)));
+  }
+  
+  &.content-heavy {
+    backdrop-filter: blur(calc(var(--glass-blur) * var(--content-density-heavy)));
+    background: rgba(255,255,255,calc(0.35 * var(--content-density-heavy)));
+  }
+  
+  // Ambient light adaptation
+  &.ambient-low {
+    opacity: var(--ambient-light-low);
+    background: rgba(255,255,255,0.25);
+  }
+  
+  &.ambient-high {
+    opacity: var(--ambient-light-high);
+    background: rgba(255,255,255,0.45);
+  }
+  
+  // User activity states
+  &.user-idle {
+    transform: scale(0.98);
+    opacity: var(--user-activity-idle);
+  }
+  
+  &.user-focused {
+    transform: scale(1.02);
+    opacity: var(--user-activity-focused);
+    box-shadow: 0 12px 40px rgba(60,60,60,0.2);
+  }
+  
+  // Enhanced shimmer animation
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--glass-shimmer);
+    opacity: calc(0.7 * var(--user-activity-active));
+    mix-blend-mode: lighten;
+    animation: shimmer-move-dynamic 4s linear infinite;
+  }
+  
+  // Interactive hover states
+  &:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(90,158,47,0.15);
+    border-color: rgba(90,158,47,0.4);
+    
+    &::before {
+      animation-duration: 2s;
+      opacity: 0.9;
+    }
+  }
+}
+
+// Enhanced shimmer animation for dynamic glass
+@keyframes shimmer-move-dynamic {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: calc(0.8 * var(--user-activity-active));
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+// Smart glass container that adapts to content
+.smart-glass-container {
+  .liquid-glass-dynamic {
+    // Automatically adjust based on content length
+    &[data-content-length="short"] {
+      @extend .content-light;
+    }
+    
+    &[data-content-length="medium"] {
+      @extend .content-heavy;
+    }
+    
+    &[data-content-length="long"] {
+      @extend .content-heavy;
+      backdrop-filter: blur(calc(var(--glass-blur) * 1.4));
+    }
+  }
+}
+
+// Time-based glass adaptation
+.liquid-glass-time-aware {
+  @extend .liquid-glass-dynamic;
+  
+  // Morning (6am - 12pm) - Fresh and bright
+  &.time-morning {
+    background: rgba(255,255,255,0.4);
+    border-color: rgba(90,158,47,0.3);
+  }
+  
+  // Afternoon (12pm - 6pm) - Balanced and professional
+  &.time-afternoon {
+    background: rgba(255,255,255,0.35);
+    border-color: rgba(90,158,47,0.25);
+  }
+  
+  // Evening (6pm - 10pm) - Warm and cozy
+  &.time-evening {
+    background: rgba(255,255,255,0.3);
+    border-color: rgba(90,158,47,0.2);
+    box-shadow: 0 8px 32px rgba(60,60,60,0.18);
+  }
+  
+  // Night (10pm - 6am) - Dark and focused
+  &.time-night {
+    background: rgba(30,34,40,0.32);
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+  }
+}

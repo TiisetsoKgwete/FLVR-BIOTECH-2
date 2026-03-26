@@ -1,0 +1,146 @@
+<!-- Accessibility Suite Component -->
+<div class="accessibility-suite" *ngIf="showAccessibilityPanel">
+  <!-- Accessibility Control Panel -->
+  <div class="accessibility-panel liquid-glass-dynamic">
+    <div class="panel-header">
+      <h3>Accessibility Suite</h3>
+      <ion-button (click)="togglePanel()" fill="clear" size="small">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </div>
+    
+    <div class="panel-content">
+      <!-- Visual Accessibility -->
+      <div class="accessibility-section">
+        <h4>Visual</h4>
+        
+        <!-- Magnifier -->
+        <div class="control-group" *ngIf="enableMagnifier">
+          <label class="control-label">
+            <ion-checkbox [(ngModel)]="settings.magnifierEnabled" (ionChange)="toggleMagnifier()"></ion-checkbox>
+            <span>Screen Magnifier</span>
+          </label>
+          <div class="control-details" *ngIf="settings.magnifierEnabled">
+            <ion-range min="1" max="3" step="0.1" [(ngModel)]="settings.magnifierLevel" (ionChange)="applyAccessibilitySettings()">
+              <div slot="start">1x</div>
+              <div slot="end">3x</div>
+            </ion-range>
+          </div>
+        </div>
+        
+        <!-- High Contrast -->
+        <div class="control-group" *ngIf="enableHighContrast">
+          <label class="control-label">
+            <ion-checkbox [(ngModel)]="settings.highContrastMode" (ionChange)="toggleHighContrast()"></ion-checkbox>
+            <span>High Contrast Mode</span>
+          </label>
+        </div>
+        
+        <!-- Font Size -->
+        <div class="control-group">
+          <label class="control-label">Font Size</label>
+          <div class="font-size-controls">
+            <ion-button 
+              *ngFor="let size of fontSizes" 
+              [class.active]="settings.fontSize === size.value"
+              (click)="changeFontSize(size.value)"
+              fill="outline"
+              size="small">
+              {{ size.label }}
+            </ion-button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Reading & Navigation -->
+      <div class="accessibility-section">
+        <h4>Reading & Navigation</h4>
+        
+        <!-- Reader Mode -->
+        <div class="control-group" *ngIf="enableReaderMode">
+          <label class="control-label">
+            <ion-checkbox [(ngModel)]="settings.readerModeEnabled" (ionChange)="toggleReaderMode()"></ion-checkbox>
+            <span>Reader Mode</span>
+          </label>
+          <p class="control-description">
+            Simplifies the page layout for better reading experience
+          </p>
+        </div>
+        
+        <!-- Reduced Motion -->
+        <div class="control-group">
+          <label class="control-label">
+            <ion-checkbox [(ngModel)]="settings.reducedMotion" (ionChange)="applyAccessibilitySettings()"></ion-checkbox>
+            <span>Reduced Motion</span>
+          </label>
+          <p class="control-description">
+            Minimizes animations and transitions
+          </p>
+        </div>
+      </div>
+      
+      <!-- Voice Control -->
+      <div class="accessibility-section" *ngIf="enableVoiceControl">
+        <h4>Voice Control</h4>
+        
+        <div class="control-group">
+          <label class="control-label">
+            <ion-checkbox [(ngModel)]="settings.voiceControlEnabled" (ionChange)="toggleVoiceControl()"></ion-checkbox>
+            <span>Voice Commands</span>
+            <ion-chip *ngIf="voiceControlActive" color="success">
+              <ion-icon name="mic"></ion-icon>
+              Listening
+            </ion-chip>
+          </label>
+          <div class="voice-commands" *ngIf="settings.voiceControlEnabled">
+            <p class="control-description">
+              Say commands like:
+            </p>
+            <ul class="command-list">
+              <li>"Go to home"</li>
+              <li>"Navigate to technology"</li>
+              <li>"Enable magnifier"</li>
+              <li>"Increase font size"</li>
+              <li>"Turn on high contrast"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Actions -->
+      <div class="accessibility-actions">
+        <ion-button (click)="resetToDefaults()" fill="outline" size="small">
+          <ion-icon name="refresh"></ion-icon>
+          Reset to Default
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Screen Magnifier Overlay -->
+<div 
+  class="magnifier-overlay" 
+  *ngIf="isMagnifierActive"
+  [style.transform]="`translate(${magnifierPosition.x - 75}px, ${magnifierPosition.y - 75}px)`"
+  [style.width.px="150 * settings.magnifierLevel"
+  [style.height.px="150 * settings.magnifierLevel">
+  <div class="magnifier-lens">
+    <div class="magnified-content" [style.transform]="`scale(${settings.magnifierLevel})`">
+      <!-- Content will be dynamically cloned here -->
+    </div>
+  </div>
+</div>
+
+<!-- Floating Accessibility Button -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="togglePanel()" color="primary" class="accessibility-fab">
+    <ion-icon name="accessibility"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<!-- Voice Control Indicator -->
+<div class="voice-control-indicator" *ngIf="voiceControlActive" [class.active]="voiceControlActive">
+  <ion-icon name="mic"></ion-icon>
+  <span>Voice Control Active</span>
+</div>

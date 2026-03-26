@@ -1,0 +1,441 @@
+// ── Accessibility Suite Styles ─────────────────────────────────────────────────────
+
+.accessibility-suite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+// Accessibility Control Panel
+.accessibility-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 380px;
+  max-height: 80vh;
+  overflow-y: auto;
+  pointer-events: all;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(90,158,47,0.2);
+    
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--clr-text);
+    }
+    
+    ion-button {
+      --padding-start: 8px;
+      --padding-end: 8px;
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+    }
+  }
+  
+  .panel-content {
+    padding: 20px 24px;
+  }
+}
+
+// Accessibility Sections
+.accessibility-section {
+  margin-bottom: 24px;
+  
+  h4 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--clr-accent);
+  }
+}
+
+// Control Groups
+.control-group {
+  margin-bottom: 20px;
+  
+  .control-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--clr-text);
+    
+    ion-checkbox {
+      --size: 20px;
+    }
+    
+    span {
+      flex: 1;
+    }
+  }
+  
+  .control-details {
+    margin-left: 32px;
+    margin-top: 8px;
+    
+    ion-range {
+      --bar-background: rgba(90,158,47,0.2);
+      --bar-background-active: var(--clr-accent);
+      --knob-background: var(--clr-accent);
+      padding: 8px 0;
+    }
+  }
+  
+  .control-description {
+    margin: 8px 0 0 32px;
+    font-size: 12px;
+    color: var(--clr-text-secondary);
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+}
+
+// Font Size Controls
+.font-size-controls {
+  display: flex;
+  gap: 8px;
+  margin-left: 32px;
+  margin-top: 8px;
+  
+  ion-button {
+    flex: 1;
+    --border-radius: 8px;
+    font-size: 12px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    
+    &.active {
+      --background: var(--clr-accent);
+      --color: white;
+    }
+  }
+}
+
+// Voice Commands
+.voice-commands {
+  margin-left: 32px;
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(90,158,47,0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--clr-accent);
+  
+  .control-description {
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  
+  .command-list {
+    margin: 0;
+    padding-left: 16px;
+    
+    li {
+      font-size: 12px;
+      color: var(--clr-text);
+      margin-bottom: 4px;
+      font-family: 'Courier New', monospace;
+    }
+  }
+}
+
+// Accessibility Actions
+.accessibility-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(90,158,47,0.2);
+  
+  ion-button {
+    flex: 1;
+    --border-radius: 10px;
+    font-size: 12px;
+  }
+}
+
+// Screen Magnifier
+.magnifier-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 8888;
+  border-radius: 50%;
+  border: 3px solid var(--clr-accent);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  
+  .magnifier-lens {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    
+    .magnified-content {
+      transform-origin: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      // Create magnified view of content under cursor
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: inherit;
+        transform: scale(1.5);
+        transform-origin: center;
+        filter: brightness(1.1) contrast(1.1);
+      }
+    }
+  }
+}
+
+// Floating Accessibility Button
+.accessibility-fab {
+  --background: var(--clr-accent);
+  --color: white;
+  --box-shadow: 0 8px 24px rgba(90,158,47,0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: scale(1.1);
+    --box-shadow: 0 12px 32px rgba(90,158,47,0.6);
+  }
+  
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+// Voice Control Indicator
+.voice-control-indicator {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(90,158,47,0.9);
+  color: white;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    
+    ion-icon {
+      animation: pulse 2s infinite;
+    }
+  }
+  
+  ion-icon {
+    font-size: 16px;
+  }
+}
+
+// Pulse animation for voice indicator
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+// Reader Mode Styles
+.reader-mode {
+  ion-content {
+    --background: #ffffff !important;
+    --color: #333333 !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
+    line-height: 1.8 !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+    
+    * {
+      font-family: inherit !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #1a1a1a !important;
+      font-weight: 700 !important;
+      margin: 2em 0 1em 0 !important;
+    }
+    
+    p {
+      margin-bottom: 1.5em !important;
+      text-align: justify !important;
+    }
+    
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+      margin: 2em 0 !important;
+      border-radius: 8px !important;
+    }
+    
+    a {
+      color: #0066cc !important;
+      text-decoration: underline !important;
+    }
+    
+    .liquid-glass,
+    .liquid-glass-enhanced,
+    .liquid-glass-dynamic {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  }
+}
+
+// High Contrast Mode
+.high-contrast {
+  --clr-text: #000000 !important;
+  --clr-bg: #ffffff !important;
+  --clr-accent: #0066cc !important;
+  --clr-primary: #0066cc !important;
+  --clr-secondary: #0066cc !important;
+  
+  ion-content {
+    --background: #ffffff !important;
+    --color: #000000 !important;
+  }
+  
+  .liquid-glass,
+  .liquid-glass-enhanced,
+  .liquid-glass-dynamic {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
+  }
+  
+  ion-button {
+    --background: #000000 !important;
+    --color: #ffffff !important;
+    --border-color: #000000 !important;
+    
+    &[fill="outline"] {
+      --background: transparent !important;
+      --color: #000000 !important;
+      --border-color: #000000 !important;
+    }
+  }
+  
+  ion-item {
+    --background: #ffffff !important;
+    --color: #000000 !important;
+    --border-color: #000000 !important;
+  }
+  
+  a {
+    color: #0066cc !important;
+    font-weight: 700 !important;
+  }
+}
+
+// Accessibility Font Sizes
+:root {
+  --accessibility-font-size: 16px;
+  --accessibility-animation-duration: 0.3s;
+}
+
+body {
+  font-size: var(--accessibility-font-size) !important;
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .accessibility-panel {
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-height: 70vh;
+  }
+  
+  .font-size-controls {
+    flex-wrap: wrap;
+    
+    ion-button {
+      min-width: calc(50% - 4px);
+    }
+  }
+  
+  .magnifier-overlay {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility-panel {
+    top: 50px;
+    right: 5px;
+    left: 5px;
+  }
+  
+  .panel-header,
+  .panel-content {
+    padding: 16px 20px;
+  }
+  
+  .voice-control-indicator {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}

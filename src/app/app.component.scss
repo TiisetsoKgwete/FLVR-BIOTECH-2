@@ -99,6 +99,7 @@ ion-menu {
   border-radius: 0 22px 22px 0;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  border-right: 1px solid rgba(90, 158, 47, 0.2);
 }
 
 .menu-header {
@@ -227,8 +228,6 @@ ion-menu {
 ion-router-outlet#main-content {
   margin-top: 60px;
   display: block;
-  position: relative;
-  z-index: 1;
 }
 
 ion-content {
