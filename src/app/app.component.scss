@@ -31,6 +31,7 @@
       color: #5a9e2f !important;
       letter-spacing: 0.04em !important;
     }
+  }
     
     ion-menu-button {
       color: #5a9e2f !important;
@@ -88,7 +89,6 @@
       }
     }
   }
-}
 
 // ── Sidebar menu styles ──────────────────────────────────────────────────────
 
@@ -106,7 +106,7 @@ ion-menu {
   ion-toolbar {
     --background: transparent !important;
     --border-width: 0;
-    --padding-start: 24px;
+      padding-top: 24px;
     --padding-end: 24px;
     --min-height: 72px;
     background: transparent !important;
@@ -176,14 +176,12 @@ ion-menu {
       position: relative;
     }
     ion-icon {
-        color: #5a9e2f !important;
-        font-size: 20px !important;
-        z-index: 2;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        min-width: 20px;
-        min-height: 20px;
+      color: #5a9e2f !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      min-width: 24px;
+      min-height: 24px;
     }
     .sidebar-icon-fallback {
       position: absolute;
@@ -216,8 +214,8 @@ ion-menu {
     margin-top: 16px;
     text-align: center;
     p {
-      font-size: 10px;
-      color: #4b5563;
+      font-size: 11px;
+      color: #222;
       margin: 0;
     }
     strong { color: #a8e063; }
