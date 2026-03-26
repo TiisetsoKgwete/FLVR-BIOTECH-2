@@ -1,12 +1,13 @@
  // Page Layout Styles
 .page-content {
-  --background: transparent;
+  --background: #f7f7f7; // Standardized background color
 }
 
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  background-color: #f7f7f7; // Added background color to match .page-content
 }
 
 .page-header {
