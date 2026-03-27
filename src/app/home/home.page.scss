@@ -1,3 +1,7 @@
+// Animation delay utility classes for cards
+.problem-card.delay-1, .tech-card.delay-1 { animation-delay: 0.1s !important; }
+.problem-card.delay-2, .tech-card.delay-2 { animation-delay: 0.2s !important; }
+.problem-card.delay-3, .tech-card.delay-3 { animation-delay: 0.3s !important; }
 // ── Enhanced Glass Styles ─────────────────────────────────────────────────────
 .live-impact-section {
   .live-grid {
@@ -58,8 +62,8 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #5a9e2f, #a8e063);
-      background-clip: text;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1em;
     }
@@ -543,10 +547,91 @@
 
     a {
       font-size: 13px;
-      color: #6b7280;
+      color: #222;
       text-decoration: none;
       transition: color 0.2s;
-      &:hover { color: #a8e063; }
+      outline: none;
+      &:hover, &:focus { color: #5a9e2f; text-decoration: underline; }
+    }
+  }
+}
+
+// ── Early Traction / Pilot Outcomes ─────────────────────────────────────────
+.early-traction-section {
+  background: #f6faf3;
+  padding: 80px 24px 60px;
+  .early-traction-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .eyebrow {
+    color: #5a9e2f;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .section-headline {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 36px;
+  }
+  .traction-grid {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .traction-card {
+    background: #fff;
+    border: 1px solid #d9edd0;
+    border-radius: 14px;
+    padding: 32px 28px;
+    min-width: 220px;
+    box-shadow: 0 2px 12px rgba(90,158,47,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .traction-num {
+      font-size: 2.2em;
+      font-weight: 800;
+      color: #5a9e2f;
+      margin-bottom: 8px;
+    }
+    .traction-label {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+  }
+  .traction-quote {
+    font-size: 18px;
+    color: #222;
+    font-style: italic;
+    margin: 32px auto 10px;
+    max-width: 600px;
+    border-left: 4px solid #a8e063;
+    padding-left: 18px;
+    text-align: left;
+    background: #f9fef6;
+  }
+  .traction-quote-source {
+    display: block;
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 6px;
+    font-style: normal;
+  }
+  .traction-cta {
+    margin-top: 30px;
+    .btn-primary {
+      font-size: 16px;
+      padding: 14px 36px;
     }
   }
 }

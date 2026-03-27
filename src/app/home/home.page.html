@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="hero-scroll-hint">
-      <ion-icon name="chevron-down-outline"></ion-icon>
+      <ion-icon name="chevron-down-outline" aria-label="Scroll down" role="img"></ion-icon>
     </div>
   </section>
 
@@ -54,6 +54,7 @@
         </div>
       </section>
 
+
       <!-- ── IMPACT NUMBERS (animated on scroll) ──────────────────────────────── -->
       <section class="impact-strip" #impactSection>
         <div class="impact-inner">
@@ -76,6 +77,31 @@
         </div>
       </section>
 
+      <!-- ── EARLY TRACTION / PILOT OUTCOMES ── -->
+      <section class="early-traction-section">
+        <div class="early-traction-inner">
+          <span class="eyebrow">Early Traction</span>
+          <h2 class="section-headline">Pilot Outcomes & Readiness</h2>
+          <div class="traction-grid">
+            <div class="traction-card">
+              <span class="traction-num">12–18%</span>
+              <span class="traction-label">Projected yield uplift<br>in stress-prone trial regions</span>
+            </div>
+            <div class="traction-card">
+              <span class="traction-num">3</span>
+              <span class="traction-label">Regional pilots<br>across crop resilience & loss prevention</span>
+            </div>
+          </div>
+          <blockquote class="traction-quote">
+            "Without action, 600 million people will still face hunger in 2030."
+            <span class="traction-quote-source">— FAO, State of Food Security & Nutrition in the World, 2023</span>
+          </blockquote>
+          <div class="traction-cta">
+            <a class="btn-primary" href="/contact" aria-label="Start a collaboration">Start a Collaboration</a>
+          </div>
+        </div>
+      </section>
+
       <!-- ── 4 PROBLEM AREAS ───────────────────────────────────────────────────── -->
       <section class="problems-section" #problemsSection>
         <div class="section-inner">
@@ -84,28 +110,28 @@
           <div class="problems-grid">
             <div class="problem-card" [class.fade-up]="problemsVisible">
               <div class="problem-icon-wrap red">
-                <ion-icon name="alert-circle-outline" aria-label="Food Shortage"></ion-icon>
+                              <ion-icon name="alert-circle-outline" aria-label="Food Shortage" role="img"></ion-icon>
               </div>
               <h3>Food Shortage</h3>
               <p>By 2050 we need to produce 70% more food with only 4% more arable land, while climate change strips 20% of current yield.</p>
             </div>
-            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.1s">
+            <div class="problem-card delay-1" [class.fade-up]="problemsVisible">
               <div class="problem-icon-wrap orange">
-                <ion-icon name="paw-outline" aria-label="Animal Cruelty"></ion-icon>
+                              <ion-icon name="paw-outline" aria-label="Animal Cruelty" role="img"></ion-icon>
               </div>
               <h3>Animal Cruelty</h3>
               <p>Over 80 billion land animals are raised for food every year under industrial conditions. Alternative proteins offer a humane path forward.</p>
             </div>
-            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.2s">
+            <div class="problem-card delay-2" [class.fade-up]="problemsVisible">
               <div class="problem-icon-wrap green">
-                <ion-icon name="cloud-outline" aria-label="Agricultural Pollution"></ion-icon>
+                              <ion-icon name="cloud-outline" aria-label="Agricultural Pollution" role="img"></ion-icon>
               </div>
               <h3>Agricultural Pollution</h3>
               <p>Agriculture accounts for 30% of global energy use, 14.5% of greenhouse gas emissions, and massive antibiotic overuse in livestock.</p>
             </div>
-            <div class="problem-card" [class.fade-up]="problemsVisible" style="animation-delay:0.3s">
+            <div class="problem-card delay-3" [class.fade-up]="problemsVisible">
               <div class="problem-icon-wrap blue">
-                <ion-icon name="trash-outline" aria-label="Food Wastage"></ion-icon>
+                              <ion-icon name="trash-outline" aria-label="Food Wastage" role="img"></ion-icon>
               </div>
               <h3>Food Wastage</h3>
               <p>1.3 billion metric tons of food wasted annually. 14% lost between harvest and retail.</p>
@@ -125,20 +151,21 @@
               <h3>CRISPR Precision Breeding</h3>
               <p>Edit crops for drought tolerance, disease resistance, and enhanced nutrition — without introducing foreign DNA.</p>
               <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
+                <span class="card-link" tabindex="0" role="button" aria-label="Learn more">Learn more <ion-icon name="arrow-forward-outline" aria-label="Arrow forward" role="img"></ion-icon></span>
             </div>
-            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.1s" routerLink="/technology">
+            <div class="tech-card delay-1" [class.fade-up]="techVisible" routerLink="/technology">
               <span class="card-tag">02</span>
               <h3>Marker-Assisted Selection</h3>
               <p>Traditional breeding takes 8–12 years. DNA markers cut that to 3–5 years at the seedling stage.</p>
               <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
             </div>
-            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.2s" routerLink="/flvr-meat">
+            <div class="tech-card delay-2" [class.fade-up]="techVisible" routerLink="/flvr-meat">
               <span class="card-tag">03</span>
               <h3>Alternative Proteins</h3>
               <p>Lab-cultivated and fermentation-based proteins that match conventional meat — without the environmental cost.</p>
               <span class="card-link">Learn more <ion-icon name="arrow-forward-outline"></ion-icon></span>
             </div>
-            <div class="tech-card" [class.fade-up]="techVisible" style="animation-delay:0.3s" routerLink="/technology">
+            <div class="tech-card delay-3" [class.fade-up]="techVisible" routerLink="/technology">
               <span class="card-tag">04</span>
               <h3>AI-Driven Agriculture</h3>
               <p>Machine learning and IoT sensors predict yield, detect crop disease in hours, and reduce input waste.</p>

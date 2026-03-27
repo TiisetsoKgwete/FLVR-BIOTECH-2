@@ -21,7 +21,7 @@
             detail="false"
             class="menu-item icon-only">
             <span class="sidebar-icon-wrap">
-              <ion-icon [name]="p.icon"></ion-icon>
+              <ion-icon [name]="p.icon" [attr.aria-label]="p.title + ' navigation icon'" [attr.title]="p.title + ' navigation icon'"></ion-icon>
             </span>
           </ion-item>
         </ion-menu-toggle>

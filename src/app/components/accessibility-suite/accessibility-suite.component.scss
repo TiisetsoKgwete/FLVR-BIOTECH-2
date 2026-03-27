@@ -34,7 +34,8 @@
     h3 {
       margin: 0;
       font-size: 18px;
-      font-weight: 700;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
       color: var(--clr-text);
     }
     
@@ -264,7 +265,8 @@
     }
   }
   
-  ion-icon {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
     font-size: 16px;
   }
 }
