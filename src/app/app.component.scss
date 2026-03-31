@@ -231,22 +231,10 @@ ion-content {
   --background: linear-gradient(135deg, #f6faf3 0%, #eafbe7 100%) !important;
 }
 
-// Responsive navigation - keep pills on all screen sizes
+// Responsive navigation - hide pills on mobile, show only hamburger
 @media (max-width: 768px) {
   .nav-pills {
-    gap: 4px;
-    margin-right: 8px;
-    
-    .nav-pill {
-      font-size: 9px;
-      --padding-start: 6px;
-      --padding-end: 6px;
-      --padding-top: 3px;
-      --padding-bottom: 3px;
-      min-height: 24px;
-      --border-radius: 12px;
-      letter-spacing: 0.2px;
-    }
+    display: none !important;
   }
   
   .top-nav ion-toolbar {
@@ -260,19 +248,7 @@ ion-content {
 
 @media (max-width: 480px) {
   .nav-pills {
-    gap: 3px;
-    margin-right: 4px;
-    
-    .nav-pill {
-      font-size: 8px;
-      --padding-start: 4px;
-      --padding-end: 4px;
-      --padding-top: 2px;
-      --padding-bottom: 2px;
-      min-height: 20px;
-      --border-radius: 10px;
-      letter-spacing: 0.1px;
-    }
+    display: none !important;
   }
   
   .top-nav ion-title {

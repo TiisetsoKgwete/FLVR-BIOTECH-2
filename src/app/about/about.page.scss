@@ -1,13 +1,13 @@
  // Page Layout Styles
 .page-content {
-  --background: #f7f7f7; // Changed to a standard background color
+  --background: linear-gradient(135deg, #f6faf3 0%, #eafbe7 100%);
 }
 
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  background-color: #f7f7f7; // Added background color to match .page-content
+  background: linear-gradient(135deg, #f6faf3 0%, #eafbe7 100%);
 }
 
 .page-header {

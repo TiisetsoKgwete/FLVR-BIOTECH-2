@@ -281,7 +281,10 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 480px) { grid-template-columns: 1fr; }
+    @media (max-width: 480px) { 
+      grid-template-columns: 1fr; 
+      gap: 12px;
+    }
   }
 
   .live-card {
@@ -298,6 +301,10 @@
     flex-direction: column;
     gap: 6px;
     transition: all 0.3s ease;
+    
+    @media (max-width: 480px) {
+      padding: 20px 16px;
+    }
 
     &:hover { 
       border-color: rgba(168, 224, 99, 0.4);
@@ -322,6 +329,10 @@
     color: #a8e063;
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    
+    @media (max-width: 480px) {
+      font-size: 28px;
+    }
   }
 
   .live-unit-inline {
