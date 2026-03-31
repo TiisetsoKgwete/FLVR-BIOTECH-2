@@ -7,7 +7,7 @@
     <ion-header class="menu-header">
       <ion-toolbar>
         <div class="menu-logo">
-          <span class="logo-mark">FLVR</span><span class="logo-sub">BIOTECH</span>
+          <ion-icon name="leaf"></ion-icon><span class="logo-sub">BIOTECH</span>
         </div>
       </ion-toolbar>
     </ion-header>
@@ -20,9 +20,7 @@
             routerDirection="root"
             detail="false"
             class="menu-item icon-only">
-            <span class="sidebar-icon-wrap">
-              <ion-icon [name]="p.icon" [attr.aria-label]="p.title + ' navigation icon'" [attr.title]="p.title + ' navigation icon'"></ion-icon>
-            </span>
+            <ion-icon [name]="p.icon"></ion-icon>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

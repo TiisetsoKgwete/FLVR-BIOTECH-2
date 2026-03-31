@@ -19,10 +19,19 @@
   max-height: 80vh;
   overflow-y: auto;
   pointer-events: all;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.5) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.4) 100%
+  );
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.2),
+    0 2px 8px rgba(255,255,255,0.3) inset;
   
   .panel-header {
     display: flex;
@@ -34,8 +43,6 @@
     h3 {
       margin: 0;
       font-size: 18px;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
       color: var(--clr-text);
     }
     
@@ -255,6 +262,8 @@
   opacity: 0;
   transform: translateX(-50%) translateY(-20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   
   &.active {
     opacity: 1;
@@ -263,11 +272,6 @@
     ion-icon {
       animation: pulse 2s infinite;
     }
-  }
-  
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-    font-size: 16px;
   }
 }
 
@@ -323,7 +327,9 @@
     
     .liquid-glass,
     .liquid-glass-enhanced,
-    .liquid-glass-dynamic {
+    .liquid-glass-dynamic,
+    .vision-glass,
+    .vision-glass-heavy {
       background: transparent !important;
       border: none !important;
       box-shadow: none !important;
@@ -348,7 +354,9 @@
   
   .liquid-glass,
   .liquid-glass-enhanced,
-  .liquid-glass-dynamic {
+  .liquid-glass-dynamic,
+  .vision-glass,
+  .vision-glass-heavy {
     background: #ffffff !important;
     border: 2px solid #000000 !important;
     color: #000000 !important;
