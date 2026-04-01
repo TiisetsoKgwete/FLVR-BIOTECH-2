@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="light dark" />
   <meta name="description" content="Flavuor Biotech: Feeding Tomorrow. Biotechnology, alternative proteins, and AI for food security and sustainability." />
   <meta name="keywords" content="biotech, food security, alternative protein, CRISPR, sustainability, agriculture, Flavuor, FLVR MEAT" />
   <meta property="og:title" content="Flavuor Biotech — Feeding Tomorrow" />
@@ -32,10 +32,135 @@
   <!-- add to homescreen for ios -->
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- Preloader Styles - Inline for immediate render -->
+  <style>
+    #app-preloader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #f6faf3 0%, #eafbe7 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    #app-preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .preloader-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .preloader-icon {
+      width: 48px;
+      height: 48px;
+      color: #5a9e2f;
+      animation: preloader-pulse 2s ease-in-out infinite;
+    }
+    
+    .preloader-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.02em;
+    }
+    
+    .preloader-sub {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #5a9e2f;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+    
+    .preloader-bar {
+      width: 200px;
+      height: 3px;
+      background: rgba(90, 158, 47, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 32px;
+    }
+    
+    .preloader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #5a9e2f, #a8e063);
+      border-radius: 3px;
+      animation: preloader-fill 2s ease-out forwards;
+    }
+    
+    @keyframes preloader-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    @keyframes preloader-fill {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      .preloader-icon { animation: none; }
+      .preloader-bar-fill { animation: none; width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
-  <app-root></app-root>
-</body>
+  <!-- Preloader - Shows immediately, hidden by app when ready -->
+  <div id="app-preloader">
+    <div class="preloader-logo">
+      <svg class="preloader-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+      </svg>
+      <div>
+        <div class="preloader-text">FLVR</div>
+        <div class="preloader-sub">BIOTECH</div>
+      </div>
+    </div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
 
-</html>
+  <app-root></app-root>
+  
+  <script>
+    // Auto-hide preloader when app is ready
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const preloader = document.getElementById('app-preloader');
+        if (preloader) {
+          preloader.classList.add('hidden');
+          // Remove from DOM after transition
+          setTimeout(function() {
+            preloader.remove();
+          }, 600);
+        }
+      }, 500); // Minimum display time for visual comfort
+    });
+    
+    // Safety timeout - hide preloader after 5 seconds max
+    setTimeout(function() {
+      const preloader = document.getElementById('app-preloader');
+      if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(function() { preloader.remove(); }, 600);
+      }
+    }, 5000);
+  </script>
+</body>

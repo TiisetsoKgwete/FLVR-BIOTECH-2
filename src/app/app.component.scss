@@ -19,7 +19,6 @@
   transition: all 0.3s ease;
   // Glass edge highlight
   &::after {
-  // ...existing code...
     content: '';
     position: absolute;
     bottom: 0;
@@ -264,5 +263,125 @@ ion-content {
       --padding-end: 7px;
       min-height: 26px;
     }
+  }
+}
+
+// ── Theme toggle button ────────────────────────────────────────────────────
+.theme-toggle {
+  --color: var(--clr-accent, #5a9e2f);
+  margin-right: 8px;
+  
+  ion-icon {
+    font-size: 22px;
+    color: var(--clr-accent, #5a9e2f);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  &:hover ion-icon {
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+// Dark mode specific styles for toggle
+body.dark-mode .theme-toggle {
+  --color: var(--clr-accent-light, #b8f576);
+  
+  ion-icon {
+    color: var(--clr-accent-light, #b8f576);
+  }
+}
+
+// ── Comprehensive Dark Mode Overrides ─────────────────────────────────────────
+body.dark-mode {
+  // Top navigation
+  .top-nav {
+    background: rgba(22, 27, 34, 0.95) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 
+      0 4px 30px rgba(0,0,0,0.3),
+      0 1px 0 rgba(255,255,255,0.1) inset !important;
+    
+    &::after {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(107, 201, 63, 0.3) 20%,
+        rgba(107, 201, 63, 0.5) 50%,
+        rgba(107, 201, 63, 0.3) 80%,
+        transparent 100%
+      );
+    }
+    
+    ion-title {
+      color: #6bc93f !important;
+    }
+    
+    ion-menu-button {
+      color: #6bc93f !important;
+    }
+  }
+  
+  // Navigation pills
+  .nav-pills {
+    .nav-pill {
+      --border-color: rgba(107, 201, 63, 0.4);
+      --color: #b8f576;
+      --background: rgba(107, 201, 63, 0.15);
+      --background-hover: rgba(107, 201, 63, 0.25);
+      --background-activated: #6bc93f;
+      --color-activated: #111827;
+      
+      &:hover, &:focus {
+        --background: rgba(107, 201, 63, 0.25);
+        --color: #ffffff;
+        box-shadow: 0 6px 18px rgba(107, 201, 63, 0.25);
+      }
+      
+      &.nav-active {
+        --background: #6bc93f;
+        --color: #111827;
+        --border-color: #6bc93f;
+        box-shadow: 0 4px 16px rgba(107, 201, 63, 0.5);
+      }
+    }
+  }
+  
+  // Sidebar menu
+  ion-menu {
+    background: rgba(13, 17, 23, 0.98) !important;
+    border-right-color: rgba(107, 201, 63, 0.2) !important;
+    box-shadow: 2px 0 20px rgba(0,0,0,0.3) !important;
+  }
+  
+  .menu-header {
+    .menu-logo {
+      .logo-mark { color: #6bc93f; }
+      .logo-sub { color: #b8f576; }
+    }
+  }
+  
+  .menu-content.icons-only {
+    .menu-item.icon-only {
+      --color: #9ca3af;
+      
+      ion-icon { color: #6bc93f; }
+      
+      &.active-item {
+        --background: rgba(107, 201, 63, 0.2);
+        ion-icon { color: #b8f576; }
+      }
+    }
+    
+    .menu-footer {
+      border-top-color: rgba(255, 255, 255, 0.08);
+      
+      p { color: #9ca3af; }
+      strong { color: #b8f576; }
+    }
+  }
+  
+  // Main content background
+  ion-router-outlet #main-content {
+    --background: #0d1117;
   }
 }

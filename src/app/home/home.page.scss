@@ -2,6 +2,26 @@
 .problem-card.delay-1, .tech-card.delay-1 { animation-delay: 0.1s !important; }
 .problem-card.delay-2, .tech-card.delay-2 { animation-delay: 0.2s !important; }
 .problem-card.delay-3, .tech-card.delay-3 { animation-delay: 0.3s !important; }
+
+// ── Performance: CSS Containment for major sections ─────────────────────────
+.hero-section,
+.live-impact-section,
+.impact-strip,
+.early-traction-section,
+.problems-section,
+.tech-section,
+.mission-section,
+.cta-section {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+// Hero section always visible (above fold)
+.hero-section {
+  content-visibility: visible;
+}
+
 // ── Enhanced Glass Styles ─────────────────────────────────────────────────────
 .live-impact-section {
   .live-grid {
@@ -168,6 +188,151 @@
   &:hover { 
     background: #ffffff;
     transform: translateY(-2px);
+  }
+}
+
+// ── Phase 3: Smart Hover Effects (CSS-Only) ───────────────────────────────
+// NO mousemove tracking - pure CSS :hover transforms only
+
+// Magnetic Button Effect - Safe CSS-only implementation
+.btn-magnetic,
+.btn-primary,
+.btn-ghost,
+.btn-white {
+  // Base state
+  will-change: auto;
+  
+  // Hover: Magnetic lift + subtle scale
+  &:hover {
+    will-change: transform;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 12px 24px rgba(90, 158, 47, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.25s ease;
+  }
+  
+  // Active: Press down effect
+  &:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 8px rgba(90, 158, 47, 0.15);
+    transition: transform 0.1s ease;
+  }
+}
+
+// 3D Card Tilt Effect - CSS-only perspective
+.card-3d,
+.problem-card,
+.tech-card,
+.traction-card,
+.live-card {
+  // GPU acceleration prep
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  
+  // Base transition
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+              box-shadow 0.4s ease;
+  
+  // Hover: Subtle 3D lift with perspective tilt
+  &:hover {
+    transform: 
+      translateY(-8px) 
+      translateZ(20px) 
+      rotateX(2deg);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.12),
+      0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Shimmer Effect on Hover - Limited to 1-2 elements via specificity
+// Only applies to featured/accent cards
+.live-card.accent,
+.tech-card:first-child {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 60%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+    animation: shimmer 1.2s ease-out;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+// Disable all hover effects on touch devices
+@media (hover: none) {
+  .btn-magnetic,
+  .btn-primary,
+  .btn-ghost,
+  .btn-white {
+    &:hover,
+    &:active {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+  
+  .card-3d,
+  .problem-card,
+  .tech-card,
+  .traction-card,
+  .live-card {
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .btn-magnetic,
+  .btn-primary,
+  .btn-ghost,
+  .btn-white,
+  .card-3d,
+  .problem-card,
+  .tech-card,
+  .traction-card,
+  .live-card {
+    transition: none !important;
+    
+    &:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    
+    &::before {
+      animation: none !important;
+      display: none !important;
+    }
   }
 }
 
@@ -350,6 +515,83 @@
   }
 
   .live-since { font-size: 11px; color: #6b7280; }
+}
+
+// ── Phase 4: Live Counter Visual Upgrades ────────────────────────────────────
+
+// Performance containment for live section
+.live-impact-section {
+  contain: layout style;
+}
+
+// Glowing number effect with CSS text-shadow
+.live-num {
+  // Tabular nums prevents layout shift during counting
+  font-variant-numeric: tabular-nums;
+  
+  // Subtle glow animation
+  animation: num-glow 2s ease-in-out infinite;
+  
+  // Enhanced text shadow for depth
+  text-shadow: 
+    0 0 10px rgba(168, 224, 99, 0.3),
+    0 0 20px rgba(168, 224, 99, 0.2),
+    0 0 30px rgba(168, 224, 99, 0.1);
+}
+
+// Pulsing glow animation
+@keyframes num-glow {
+  0%, 100% { 
+    text-shadow: 
+      0 0 10px rgba(168, 224, 99, 0.3),
+      0 0 20px rgba(168, 224, 99, 0.2),
+      0 0 30px rgba(168, 224, 99, 0.1);
+  }
+  50% { 
+    text-shadow: 
+      0 0 15px rgba(168, 224, 99, 0.4),
+      0 0 30px rgba(168, 224, 99, 0.3),
+      0 0 45px rgba(168, 224, 99, 0.2);
+  }
+}
+
+// SVG Wave background behind live cards
+.live-card {
+  position: relative;
+  overflow: hidden;
+  
+  // Wave decoration using CSS (performance-safe alternative to SVG)
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(168, 224, 99, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 100%, rgba(90, 158, 47, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 70% 100%, rgba(90, 158, 47, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  
+  // Accent card has stronger wave
+  &.accent::after {
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(168, 224, 99, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 100%, rgba(90, 158, 47, 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 70% 100%, rgba(90, 158, 47, 0.1) 0%, transparent 60%);
+    opacity: 0.8;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .live-num {
+    animation: none !important;
+    text-shadow: 0 0 10px rgba(168, 224, 99, 0.2) !important;
+  }
 }
 
 @keyframes pulse {
@@ -664,6 +906,150 @@
     .btn-primary {
       font-size: 16px;
       padding: 14px 36px;
+    }
+  }
+}
+
+// ── Dark Mode Overrides ────────────────────────────────────────────────────────
+body.dark-mode {
+  // Problems section
+  .problems-section {
+    background: #161b22 !important;
+
+    .section-headline {
+      color: #f6faf3 !important;
+    }
+
+    .problem-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+
+      h3 { 
+        color: #ffffff !important; 
+        font-weight: 700;
+        text-shadow: none !important;
+      }
+      p { 
+        color: #e5e7eb !important;
+        line-height: 1.7;
+      }
+    }
+
+    .problem-icon-wrap {
+      &.red { 
+        background: rgba(239, 68, 68, 0.2) !important; 
+        ion-icon { color: #fca5a5 !important; } 
+      }
+      &.orange { 
+        background: rgba(249, 115, 22, 0.2) !important; 
+        ion-icon { color: #fdba74 !important; } 
+      }
+      &.green { 
+        background: rgba(34, 197, 94, 0.2) !important; 
+        ion-icon { color: #86efac !important; } 
+      }
+      &.blue { 
+        background: rgba(59, 130, 246, 0.2) !important; 
+        ion-icon { color: #93c5fd !important; } 
+      }
+    }
+  }
+
+  // Tech section
+  .tech-section {
+    background: #0d1117;
+
+    .section-headline { color: #f6faf3 !important; }
+
+    .tech-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+
+      h3 { color: #ffffff !important; }
+      p { color: #e5e7eb !important; }
+      .card-tag { color: #b8f576 !important; }
+      .card-link { color: #6bc93f !important; }
+    }
+  }
+
+  // Mission section
+  .mission-section {
+    background: #0d1117 !important;
+    
+    .mission-quote {
+      color: #ffffff !important;
+      border-left-color: #6bc93f !important;
+    }
+    .mission-body { color: #e5e7eb !important; }
+  }
+
+  // Early traction section
+  .early-traction-section {
+    background: #161b22 !important;
+
+    .section-headline { color: #f6faf3 !important; }
+    .eyebrow { color: #b8f576 !important; }
+
+    .traction-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+
+      .traction-num { color: #b8f576 !important; }
+      .traction-label { color: #e5e7eb !important; }
+    }
+
+    .traction-quote {
+      color: #ffffff !important;
+      border-left-color: #6bc93f !important;
+      background: #21262d !important;
+    }
+
+    .traction-quote-source { color: #9ca3af !important; }
+  }
+
+  // Impact strip
+  .impact-strip {
+    background: #0d1117 !important;
+
+    .stat-num { color: #b8f576 !important; }
+    .stat-label { color: #e5e7eb !important; }
+  }
+
+  // Live impact section
+  .live-impact-section {
+    background: #0a0f0a !important;
+
+    .live-card {
+      background: #161b22 !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    
+    .live-num { color: #b8f576 !important; }
+    .live-unit { color: #e5e7eb !important; }
+    .live-since { color: #9ca3af !important; }
+  }
+
+  // Footer
+  .site-footer {
+    background: #0a0f0a !important;
+
+    .footer-logo { color: #ffffff !important; }
+    .footer-copy { color: #9ca3af !important; }
+
+    .footer-links a {
+      color: #e5e7eb !important;
+      &:hover { color: #b8f576 !important; }
     }
   }
 }

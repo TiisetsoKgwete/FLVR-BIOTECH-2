@@ -1,4 +1,7 @@
 <ion-app>
+  <!-- FPS Counter for performance monitoring -->
+  <app-fps-counter></app-fps-counter>
+  
   <!-- ── Sidebar menu ──────────────────────────────── -->
 
   <!-- Sidebar menu: icons only -->
@@ -39,6 +42,17 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>FLVR BIOTECH</ion-title>
+      
+      <!-- Dark mode toggle -->
+      <ion-buttons slot="end">
+        <ion-button 
+          (click)="toggleDarkMode()" 
+          class="theme-toggle"
+          fill="clear"
+          [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+          <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
       
       <!-- Horizontal navigation pills -->
       <ion-buttons slot="end" class="nav-pills">

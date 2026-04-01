@@ -1,7 +1,9 @@
 
 <ion-content class="home-content" [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <!-- HERO with background image -->
-  <section class="hero-section">
+  <section class="hero-section section-ambient">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <span class="eyebrow">Feeding Tomorrow</span>
@@ -24,29 +26,29 @@
   </section>
 
       <!-- ── LIVE IMPACT COUNTERS ──────────────────────────────────────────────── -->
-      <section class="live-impact-section">
+      <section class="live-impact-section" #liveSection>
         <div class="live-header">
           <span class="live-dot"></span>
           <span class="live-label">Live Impact Data</span>
           <span class="live-sublabel">— calculated from verified annual rates, updated every second</span>
         </div>
         <div class="live-grid">
-          <div class="live-card">
+          <div class="live-card ambient-float">
             <span class="live-num">{{ wastedKg | number:'1.0-0' }}</span>
             <span class="live-unit">kg food wasted</span>
             <span class="live-since">since you opened this page</span>
           </div>
-          <div class="live-card accent">
+          <div class="live-card accent ambient-float-delayed">
             <span class="live-num">811<span class="live-unit-inline">M</span></span>
             <span class="live-unit">people hungry tonight</span>
             <span class="live-since">every single night</span>
           </div>
-          <div class="live-card">
+          <div class="live-card ambient-float" style="animation-delay: -2s;">
             <span class="live-num">{{ co2Tonnes | number:'1.0-0' }}</span>
             <span class="live-unit">tonnes CO₂ from meat</span>
             <span class="live-since">today so far</span>
           </div>
-          <div class="live-card">
+          <div class="live-card ambient-float" style="animation-delay: -4s;">
             <span class="live-num">{{ waterLitres | number:'1.0-0' }}</span>
             <span class="live-unit">litres of water</span>
             <span class="live-since">used for beef production today</span>
@@ -192,11 +194,12 @@
       </section>
 
       <!-- ── CTA ──────────────────────────────────────────────────────────────── -->
-      <section class="cta-section">
+      <section class="cta-section section-ambient">
+        <div class="ambient-orb ambient-orb-3"></div>
         <div class="cta-inner">
           <h2>Partner with us</h2>
           <p>Whether you're a researcher, investor, or change-maker — we want to work with you.</p>
-          <a class="btn-white" routerLink="/contact">Get in Touch</a>
+          <a class="btn-white ambient-glow" routerLink="/contact">Get in Touch</a>
         </div>
       </section>
 

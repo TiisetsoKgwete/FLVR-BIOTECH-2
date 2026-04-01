@@ -3,7 +3,27 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Feature flags for gradual rollout - set to false to disable features
+  features: {
+    preloader: true,
+    hoverEffects: true,
+    liveCounterAnimations: true,
+    ambientMotion: true,
+    scrollReveals: false,
+    pageTransitions: false,
+    labMode: false,
+    techCardExpand: false,
+    hero3D: false,
+    fpsCounter: true // Debug overlay for performance monitoring
+  },
+  // Performance settings
+  performance: {
+    maxBackdropFilters: 4,
+    maxParticles: 15,
+    scrollThrottleMs: 16,
+    counterUpdateIntervalMs: 1000
+  }
 };
 
 /*

@@ -1,21 +1,96 @@
 <ion-content class="page-content">
-  <section class="section-inner">
-    <span class="eyebrow">Food Security</span>
-    <h1>The system is failing across four linked fronts.</h1>
-    <ol>
-      <li><strong>Food shortage:</strong> Climate shocks, yield instability, and constrained land expansion are widening the gap between demand and supply.</li>
-      <li><strong>Food wastage:</strong> Large portions of global production are lost after harvest or wasted after distribution, even while hunger persists.</li>
-      <li><strong>Agricultural pollution:</strong> High-emission production models intensify energy use, water stress, and climate-linked instability across supply chains.</li>
-      <li><strong>Animal-system pressure:</strong> Industrial livestock systems magnify welfare concerns, resource inefficiency, and antibiotic dependency at scale.</li>
-    </ol>
-    <h2>Six Pillars of Food Security</h2>
-    <ul>
-      <li>Availability</li>
-      <li>Access</li>
-      <li>Utilization</li>
-      <li>Stability</li>
-      <li>Agency</li>
-      <li>Sustainability</li>
-    </ul>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <span class="eyebrow">Global Challenge</span>
+      <h1 class="hero-headline">The system is failing across four linked fronts.</h1>
+      <p class="hero-sub">Understanding the interconnected crises threatening global food security.</p>
+    </div>
+  </section>
+
+  <!-- Four Crises Section -->
+  <section class="crises-section">
+    <div class="section-inner">
+      <div class="crises-grid">
+        <div class="crisis-card">
+          <div class="crisis-icon red">
+            <ion-icon name="warning-outline"></ion-icon>
+          </div>
+          <h3>Food Shortage</h3>
+          <p>Climate shocks, yield instability, and constrained land expansion are widening the gap between demand and supply.</p>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-icon orange">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+          <h3>Food Wastage</h3>
+          <p>Large portions of global production are lost after harvest or wasted after distribution, even while hunger persists.</p>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-icon blue">
+            <ion-icon name="cloud-outline"></ion-icon>
+          </div>
+          <h3>Agricultural Pollution</h3>
+          <p>High-emission production models intensify energy use, water stress, and climate-linked instability across supply chains.</p>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-icon green">
+            <ion-icon name="paw-outline"></ion-icon>
+          </div>
+          <h3>Animal-System Pressure</h3>
+          <p>Industrial livestock systems magnify welfare concerns, resource inefficiency, and antibiotic dependency at scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Six Pillars Section -->
+  <section class="pillars-section">
+    <div class="section-inner">
+      <span class="eyebrow">Framework</span>
+      <h2 class="section-headline">Six Pillars of Food Security</h2>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <ion-icon name="cube-outline"></ion-icon>
+          <h4>Availability</h4>
+          <p>Sufficient quantities of food consistently available</p>
+        </div>
+        <div class="pillar-card">
+          <ion-icon name="key-outline"></ion-icon>
+          <h4>Access</h4>
+          <p>Ability to obtain appropriate and nutritious food</p>
+        </div>
+        <div class="pillar-card">
+          <ion-icon name="fitness-outline"></ion-icon>
+          <h4>Utilization</h4>
+          <p>Proper biological use of food through diet and health</p>
+        </div>
+        <div class="pillar-card">
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+          <h4>Stability</h4>
+          <p>Consistent availability and access over time</p>
+        </div>
+        <div class="pillar-card">
+          <ion-icon name="person-outline"></ion-icon>
+          <h4>Agency</h4>
+          <p>Ability to make decisions about food consumption</p>
+        </div>
+        <div class="pillar-card">
+          <ion-icon name="leaf-outline"></ion-icon>
+          <h4>Sustainability</h4>
+          <p>Long-term environmental and economic viability</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Join the solution</h2>
+      <p>Discover how biotechnology can address these challenges.</p>
+      <a class="btn-primary" routerLink="/technology">Our Technologies</a>
+    </div>
   </section>
 </ion-content>

@@ -75,14 +75,258 @@ ion-header::after { display: none; }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    // Glass effects for dark
     --glass-bg: rgba(30,34,40,0.32);
     --glass-border: rgba(255,255,255,0.12);
     --glass-blur: 22px;
     --glass-shadow: 0 4px 32px 0 rgba(0,0,0,0.22);
     --glass-shimmer: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%);
     --icon-glow: 0 0 12px 3px #a8e06399;
+    
+    // Text colors - high contrast for readability
     --clr-text: #f6faf3;
+    --clr-text-muted: #9ca3af;
     --clr-bg-hero: #111827;
+    
+    // Ionic overrides for dark mode
+    --ion-background-color: #0d1117;
+    --ion-background-color-rgb: 13, 17, 23;
+    --ion-text-color: #f6faf3;
+    --ion-text-color-rgb: 246, 250, 243;
+    --ion-toolbar-background: #161b22;
+    --ion-toolbar-color: #f6faf3;
+    
+    // Brand colors - brighter green for dark mode visibility
+    --clr-accent: #6bc93f;
+    --clr-accent-light: #b8f576;
+    --clr-accent-dark: #5a9e2f;
+    --clr-surface: #161b22;
+    --clr-surface-alt: #21262d;
+    --clr-border: #30363d;
+  }
+}
+
+// Manual dark mode class (applied via JS toggle)
+body.dark-mode {
+  --glass-bg: rgba(30,34,40,0.32);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-blur: 22px;
+  --glass-shadow: 0 4px 32px 0 rgba(0,0,0,0.22);
+  --glass-shimmer: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%);
+  --icon-glow: 0 0 12px 3px #a8e06399;
+  
+  --clr-text: #f6faf3;
+  --clr-text-muted: #9ca3af;
+  --clr-bg-hero: #111827;
+  
+  --ion-background-color: #0d1117;
+  --ion-background-color-rgb: 13, 17, 23;
+  --ion-text-color: #f6faf3;
+  --ion-text-color-rgb: 246, 250, 243;
+  --ion-toolbar-background: #161b22;
+  --ion-toolbar-color: #f6faf3;
+  
+  --clr-accent: #6bc93f;
+  --clr-accent-light: #b8f576;
+  --clr-accent-dark: #5a9e2f;
+  --clr-surface: #161b22;
+  --clr-surface-alt: #21262d;
+  --clr-border: #30363d;
+  
+  // Dark mode specific overrides
+  color-scheme: dark;
+  
+  // Top navigation - ensure visibility
+  .top-nav {
+    background: rgba(22, 27, 34, 0.95) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    
+    ion-title {
+      color: #6bc93f !important;
+    }
+    
+    ion-menu-button {
+      color: #6bc93f !important;
+    }
+  }
+  
+  // Nav pills - high contrast
+  .nav-pills {
+    .nav-pill {
+      --border-color: rgba(107, 201, 63, 0.4);
+      --color: #b8f576;
+      --background: rgba(107, 201, 63, 0.1);
+      --background-hover: rgba(107, 201, 63, 0.2);
+      --background-activated: #6bc93f;
+      
+      &:hover {
+        --background: rgba(107, 201, 63, 0.2);
+        color: #ffffff;
+      }
+      
+      &.nav-active {
+        --background: #6bc93f;
+        --color: #111827;
+        --border-color: #6bc93f;
+      }
+    }
+  }
+  
+  // Sidebar menu
+  ion-menu {
+    background: rgba(13, 17, 23, 0.98) !important;
+    border-right-color: rgba(255, 255, 255, 0.1) !important;
+    
+    .menu-item {
+      --color: #9ca3af;
+      
+      ion-icon {
+        color: #6bc93f;
+      }
+      
+      &.active-item {
+        --background: rgba(107, 201, 63, 0.2);
+        
+        ion-icon {
+          color: #b8f576;
+        }
+      }
+    }
+  }
+  
+  // Hero section stays same (dark overlay already)
+  .hero-section {
+    .hero-headline { color: #ffffff; }
+    .hero-sub { color: rgba(255, 255, 255, 0.9); }
+    .eyebrow { color: #b8f576; }
+  }
+  
+  .live-impact-section {
+    background: #0a0f0a;
+    
+    .live-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(107, 201, 63, 0.2);
+    }
+  }
+  
+  .impact-strip {
+    background: #0d1117;
+    
+    .stat-num { color: #b8f576; }
+    .stat-label { color: #9ca3af; }
+  }
+  
+  .mission-section {
+    background: #0d1117;
+    
+    .mission-quote { 
+      color: #f6faf3; 
+      border-left-color: #6bc93f;
+    }
+    .mission-body { color: #9ca3af; }
+  }
+  
+  .problems-section {
+    background: #161b22;
+    
+    .section-headline {
+      color: #f6faf3;
+    }
+    
+    .problem-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      
+      h3 { 
+        color: #ffffff !important; 
+        font-weight: 700;
+      }
+      p { 
+        color: #e5e7eb !important;
+        line-height: 1.7;
+      }
+      
+      .problem-icon-wrap {
+        &.red { background: rgba(239, 68, 68, 0.2) !important; ion-icon { color: #fca5a5 !important; } }
+        &.orange { background: rgba(249, 115, 22, 0.2) !important; ion-icon { color: #fdba74 !important; } }
+        &.green { background: rgba(34, 197, 94, 0.2) !important; ion-icon { color: #86efac !important; } }
+        &.blue { background: rgba(59, 130, 246, 0.2) !important; ion-icon { color: #93c5fd !important; } }
+      }
+    }
+  }
+  
+  .tech-section {
+    background: #0d1117;
+    
+    .section-headline { color: #f6faf3; }
+    
+    .tech-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      
+      h3 { color: #ffffff !important; }
+      p { color: #e5e7eb !important; }
+      .card-tag { color: #b8f576; }
+      .card-link { color: #6bc93f; }
+    }
+  }
+  
+  .early-traction-section {
+    background: #161b22;
+    
+    .section-headline { color: #f6faf3; }
+    .eyebrow { color: #b8f576; }
+    
+    .traction-card {
+      background: #21262d !important;
+      border: 1px solid #30363d !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      
+      .traction-num { color: #b8f576; }
+      .traction-label { color: #e5e7eb !important; }
+    }
+    
+    .traction-quote {
+      color: #ffffff !important;
+      border-left-color: #6bc93f;
+      background: #21262d !important;
+    }
+    
+    .traction-quote-source {
+      color: #9ca3af;
+    }
+  }
+  
+  .cta-section {
+    background: linear-gradient(135deg, #4a8525, #5a9e2f);
+    
+    h2, p { color: #ffffff; }
+    
+    .btn-primary {
+      background: #ffffff;
+      color: #111827;
+    }
+  }
+  
+  .site-footer {
+    background: #0a0f0a;
+    
+    .footer-logo { color: #f6faf3; }
+    .footer-copy { color: #6b7280; }
+    
+    .footer-links a {
+      color: #9ca3af;
+      &:hover { color: #b8f576; }
+    }
   }
 }
 
@@ -548,5 +792,347 @@ ion-modal, .modal-wrapper, .glass-modal {
     background: rgba(30,34,40,0.32);
     border-color: rgba(255,255,255,0.12);
     box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+  }
+}
+
+// ── PERFORMANCE-SAFE GLASS SYSTEM ───────────────────────────────────────────────
+// Use these instead of backdrop-filter when performance matters
+
+// GPU-only glass effect (no blur, uses opacity and shadows)
+.glass-gpu {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.9) 0%,
+    rgba(255,255,255,0.75) 50%,
+    rgba(255,255,255,0.85) 100%
+  );
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: var(--glass-radius);
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.08),
+    0 2px 8px rgba(255,255,255,0.5) inset;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 40px rgba(0,0,0,0.12),
+      0 2px 8px rgba(255,255,255,0.6) inset;
+  }
+}
+
+// Limited blur glass (uses 20px max blur - much cheaper than 40px)
+.glass-lite {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+// Performance toggle - add .perf-mode to body to disable expensive effects
+.perf-mode {
+  .vision-glass,
+  .vision-glass-heavy,
+  .vision-glass-subtle,
+  .liquid-glass,
+  .liquid-glass-dynamic,
+  .floating-glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255,255,255,0.95) !important;
+  }
+  
+  // Disable shimmer animations
+  .liquid-glass::before,
+  .liquid-glass-dynamic::before {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .vision-glass,
+  .liquid-glass,
+  .liquid-glass-dynamic,
+  .floating-glass {
+    backdrop-filter: blur(10px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(120%) !important;
+    transition: none !important;
+    
+    &::before {
+      animation: none !important;
+    }
+  }
+}
+
+// Low-power mode detection
+@media (prefers-reduced-transparency: reduce) {
+  .vision-glass,
+  .liquid-glass,
+  .liquid-glass-dynamic,
+  .floating-glass {
+    backdrop-filter: none !important;
+    background: rgba(255,255,255,0.98) !important;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// PHASE 6: AMBIENT MOTION SYSTEM
+// Performance-safe, subtle ambient animations
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Ambient Floating Animation ───────────────────────────────────────────────
+@keyframes ambient-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-4px) rotate(0deg); }
+  75% { transform: translateY(-12px) rotate(-0.5deg); }
+}
+
+@keyframes ambient-float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-15px) translateX(5px); }
+  66% { transform: translateY(-8px) translateX(-3px); }
+}
+
+// ── Breathing Glow Animation ──────────────────────────────────────────────────
+@keyframes ambient-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(107, 201, 63, 0.2), 0 0 40px rgba(107, 201, 63, 0.1);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(107, 201, 63, 0.35), 0 0 60px rgba(107, 201, 63, 0.2);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes ambient-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+// ── Gradient Shift Animation ──────────────────────────────────────────────────
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// ── Subtle Rotation ──────────────────────────────────────────────────────────
+@keyframes ambient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ambient-rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ── Ambient Motion Classes ────────────────────────────────────────────────────
+.ambient-float {
+  animation: ambient-float 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-float-slow {
+  animation: ambient-float-slow 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-float-delayed {
+  animation: ambient-float 10s ease-in-out infinite;
+  animation-delay: -3s;
+  will-change: transform;
+}
+
+.ambient-glow {
+  animation: ambient-glow 4s ease-in-out infinite;
+  will-change: box-shadow, filter;
+}
+
+.ambient-pulse {
+  animation: ambient-pulse 3s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.ambient-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.ambient-rotate-slow {
+  animation: ambient-rotate-slow 60s linear infinite;
+  will-change: transform;
+}
+
+// ── Ambient Background Orbs ──────────────────────────────────────────────────
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.ambient-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(107, 201, 63, 0.4) 0%, transparent 70%);
+  top: 10%;
+  right: -100px;
+  animation: ambient-float-slow 20s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(168, 224, 99, 0.3) 0%, transparent 70%);
+  bottom: 20%;
+  left: -50px;
+  animation: ambient-float 18s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+.ambient-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(90, 158, 47, 0.35) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ambient-pulse 10s ease-in-out infinite;
+}
+
+// ── Card Ambient Effects ─────────────────────────────────────────────────────
+.card-ambient {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(107, 201, 63, 0.05) 50%,
+      transparent 70%
+    );
+    animation: ambient-rotate-slow 30s linear infinite;
+    pointer-events: none;
+  }
+}
+
+// ── Section Ambient Overlays ──────────────────────────────────────────────────
+.section-ambient {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 30%, rgba(107, 201, 63, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(168, 224, 99, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    animation: ambient-pulse 15s ease-in-out infinite;
+  }
+}
+
+// ── Shimmer Effect ────────────────────────────────────────────────────────────
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.ambient-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+// ── Dark Mode Ambient Adjustments ─────────────────────────────────────────────
+body.dark-mode {
+  .ambient-orb {
+    opacity: 0.2;
+    filter: blur(100px);
+  }
+  
+  .ambient-orb-1 {
+    background: radial-gradient(circle, rgba(107, 201, 63, 0.25) 0%, transparent 70%);
+  }
+  
+  .ambient-orb-2 {
+    background: radial-gradient(circle, rgba(168, 224, 99, 0.2) 0%, transparent 70%);
+  }
+  
+  .ambient-orb-3 {
+    background: radial-gradient(circle, rgba(184, 245, 118, 0.15) 0%, transparent 70%);
+  }
+  
+  .ambient-glow {
+    animation: ambient-glow 4s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(107, 201, 63, 0.15), 0 0 40px rgba(107, 201, 63, 0.08);
+  }
+}
+
+// ── Performance: Disable Ambient on Reduced Motion ───────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .ambient-float,
+  .ambient-float-slow,
+  .ambient-float-delayed,
+  .ambient-glow,
+  .ambient-pulse,
+  .ambient-gradient,
+  .ambient-rotate-slow,
+  .ambient-shimmer,
+  .ambient-orb,
+  .card-ambient::before,
+  .section-ambient::before {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .ambient-orb {
+    display: none !important;
+  }
+}
+
+// ── Performance Mode: Disable Ambient ────────────────────────────────────────
+.perf-mode {
+  .ambient-float,
+  .ambient-float-slow,
+  .ambient-float-delayed,
+  .ambient-glow,
+  .ambient-pulse,
+  .ambient-gradient,
+  .ambient-rotate-slow,
+  .ambient-shimmer {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .ambient-orb {
+    display: none !important;
+  }
+  
+  .card-ambient::before,
+  .section-ambient::before {
+    display: none !important;
   }
 }
