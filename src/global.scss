@@ -1113,6 +1113,26 @@ body.dark-mode {
   }
 }
 
+// ── Safe Area Support for Modern Phones ─────────────────────────────────────
+ion-content {
+  --padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+ion-footer {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+// Ensure footer content doesn't overlap with home indicator
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+  padding-bottom: constant(safe-area-inset-bottom, 20px); /* iOS 11.0 fallback */
+}
+
+// Adjust for iPhone X+ status bar
+ion-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
 // ── Performance Mode: Disable Ambient ────────────────────────────────────────
 .perf-mode {
   .ambient-float,

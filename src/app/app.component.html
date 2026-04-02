@@ -23,7 +23,10 @@
             routerDirection="root"
             detail="false"
             class="menu-item icon-only">
-            <ion-icon [name]="p.icon"></ion-icon>
+            <div class="menu-item-content">
+              <ion-icon [name]="p.icon"></ion-icon>
+              <span class="menu-label">{{ p.title }}</span>
+            </div>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
