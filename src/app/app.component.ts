@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
     try {
       localStorage.setItem('flvr-dark-mode', JSON.stringify(this.isDarkMode));
     } catch (e) {
-      console.warn('Could not save dark mode preference');
+      // Silently handle storage errors
     }
   }
 
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
         this.applyDarkMode();
       }
     } catch (e) {
-      console.warn('Could not load dark mode preference');
+      // Silently handle storage errors
     }
   }
 }

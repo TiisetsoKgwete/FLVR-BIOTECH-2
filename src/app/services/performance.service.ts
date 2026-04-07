@@ -115,7 +115,7 @@ export class PerformanceService {
    */
   enablePerformanceMode(): void {
     document.body.classList.add('perf-mode');
-    console.warn('[PerformanceService] Performance mode enabled - expensive effects disabled');
+    // Performance mode enabled silently
   }
 
   /**

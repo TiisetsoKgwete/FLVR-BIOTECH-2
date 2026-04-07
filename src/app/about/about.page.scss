@@ -260,4 +260,19 @@ body.dark-mode {
   .page-subtitle {
     font-size: 1.1rem;
   }
+  
+  // Disable shimmer animations on mobile for better FPS
+  .content-section {
+    &::before {
+      animation: none !important;
+      opacity: 0.2 !important;
+    }
+  }
+  
+  blockquote {
+    &::before {
+      animation: none !important;
+      opacity: 0.2 !important;
+    }
+  }
 }

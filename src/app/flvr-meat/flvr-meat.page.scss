@@ -321,7 +321,7 @@ body.dark-mode {
   .tech-section {
     background: #0d1117;
 
-    .section-headline { color: #ffffff !important; }
+    .section-headline { color: #b8f576 !important; }
 
     .tech-card {
       background: #21262d !important;
@@ -338,5 +338,12 @@ body.dark-mode {
         border-color: #6bc93f !important;
       }
     }
+  }
+
+  // Global headline override - ensure all section headlines are visible
+  .section-headline {
+    color: #b8f576 !important;
+    background: none !important;
+    -webkit-text-fill-color: #b8f576 !important;
   }
 }

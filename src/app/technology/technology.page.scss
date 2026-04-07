@@ -199,6 +199,12 @@
   
   .content-section {
     padding: 1.5rem;
+    
+    // Disable shimmer animation on mobile for better FPS
+    &::before {
+      animation: none !important;
+      opacity: 0.2 !important;
+    }
   }
 }
 

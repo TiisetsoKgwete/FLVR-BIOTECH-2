@@ -77,7 +77,7 @@ export class AccessibilitySuiteComponent implements OnInit, OnDestroy {
   // Setup voice control
   private setupVoiceControl(): void {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-      console.warn('Speech recognition not supported');
+      // Speech recognition not supported in this browser - skip setup
       return;
     }
     
@@ -95,14 +95,14 @@ export class AccessibilitySuiteComponent implements OnInit, OnDestroy {
     };
     
     this.recognition.onerror = (event: any) => {
-      console.error('Speech recognition error:', event.error);
+      // Silently handle speech recognition errors - not all browsers support this
       this.voiceControlActive = false;
     };
   }
   
   // Process voice commands
   private processVoiceCommand(command: string): void {
-    console.log('Voice command:', command);
+    // Voice command processing - commands handled silently
     
     // Navigation commands
     if (command.includes('go to home') || command.includes('navigate home')) {
@@ -276,7 +276,7 @@ export class AccessibilitySuiteComponent implements OnInit, OnDestroy {
   // Toggle voice control
   toggleVoiceControl(): void {
     if (!this.recognition) {
-      console.warn('Voice control not available');
+      // Voice control not available - silently return
       return;
     }
     
@@ -361,7 +361,7 @@ export class AccessibilitySuiteComponent implements OnInit, OnDestroy {
           this.toggleVoiceControl();
         }
       } catch (error) {
-        console.error('Failed to load accessibility settings:', error);
+        // Silently handle settings load errors
       }
     }
   }

@@ -917,7 +917,7 @@ body.dark-mode {
     background: #161b22 !important;
 
     .section-headline {
-      color: #f6faf3 !important;
+      color: #b8f576 !important;
     }
 
     .problem-card {
@@ -962,7 +962,7 @@ body.dark-mode {
   .tech-section {
     background: #0d1117;
 
-    .section-headline { color: #f6faf3 !important; }
+    .section-headline { color: #b8f576 !important; }
 
     .tech-card {
       background: #21262d !important;
@@ -993,7 +993,7 @@ body.dark-mode {
   .early-traction-section {
     background: #161b22 !important;
 
-    .section-headline { color: #f6faf3 !important; }
+    .section-headline { color: #b8f576 !important; }
     .eyebrow { color: #b8f576 !important; }
 
     .traction-card {
@@ -1051,5 +1051,12 @@ body.dark-mode {
       color: #e5e7eb !important;
       &:hover { color: #b8f576 !important; }
     }
+  }
+
+  // Global headline override - ensure all section headlines are visible
+  .section-headline {
+    color: #b8f576 !important;
+    background: none !important;
+    -webkit-text-fill-color: #b8f576 !important;
   }
 }

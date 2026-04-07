@@ -1156,3 +1156,22 @@ ion-header {
     display: none !important;
   }
 }
+
+// ── DARK MODE: Force all section headlines to be visible ─────────────────────
+body.dark-mode {
+  // Override ALL section headlines with extreme specificity
+  .section-headline,
+  h2.section-headline,
+  .early-traction-section .section-headline,
+  .problems-section .section-headline,
+  .tech-section .section-headline,
+  .benefits-section .section-headline,
+  .tech-section .section-headline {
+    color: #b8f576 !important;
+    background: transparent !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #b8f576 !important;
+    text-shadow: none !important;
+  }
+}
